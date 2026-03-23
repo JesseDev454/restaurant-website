@@ -68,10 +68,12 @@ export function ContactSection() {
               href="https://maps.google.com/?q=12+Adeola+Odeku+St,+Victoria+Island,+Lagos"
               target="_blank"
               rel="noreferrer"
-              className="flex h-20 w-20 items-center justify-center rounded-full bg-primary text-on-primary shadow-2xl transition-transform hover:scale-110"
+              className="motion-safe:animate-bounce"
               aria-label="Open Lagos Kinetic in Google Maps"
             >
-              <MapPinned size={34} />
+              <span className="flex h-20 w-20 items-center justify-center rounded-full bg-primary text-on-primary shadow-2xl transition-transform hover:scale-110">
+                <MapPinned size={34} />
+              </span>
             </a>
           </div>
         </Reveal>
