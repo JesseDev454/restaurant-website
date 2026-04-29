@@ -72,6 +72,8 @@ export function ClientFormFields({ formValues, onFieldChange }: ClientFormFields
             min="0"
             value={formValues.setupFeeAmount}
             onChange={(event) => onFieldChange("setupFeeAmount", Number(event.target.value))}
+            title="Setup fee amount"
+            placeholder="0"
             className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition-colors focus:border-slate-400 focus:bg-white"
           />
         </Field>
@@ -82,6 +84,8 @@ export function ClientFormFields({ formValues, onFieldChange }: ClientFormFields
             min="0"
             value={formValues.monthlyFeeAmount}
             onChange={(event) => onFieldChange("monthlyFeeAmount", Number(event.target.value))}
+            title="Monthly fee amount"
+            placeholder="0"
             className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition-colors focus:border-slate-400 focus:bg-white"
           />
         </Field>
