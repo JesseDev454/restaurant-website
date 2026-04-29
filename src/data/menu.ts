@@ -201,33 +201,29 @@ export const menuCategories: MenuCategory[] = [
         name: "Chapman Cooler",
         description: "A cold, bittersweet classic with citrus, cucumber, and Lagos energy.",
         price: "₦2,000",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuAK28wy6wmmYjQ1DFENj1fyWST5HjbgAYuFEERR4kTti9_95OS4xKWYYBuOh1MFkZZLD4WKCP1yduRxhk0zdulyVB6-i2BpQRxmoBSWA-HoUD7R7GAZK1Y5QcbQkKAVuoZ2P49ljHnpGucVNINLT1J9dljjKdyxy3IMyAR2SZqUmXRnMtd7AHJFwF2_2Y_qeDIv2g8GcaVKkA_pv3swneJZzpnrRjz8wN_oS70TtL7zW3GU8DdWddUbKrc_C9MgVbUinBRIZql5I_s0",
-        imageAlt: "Modern cocktail bar area with ambient lighting",
+          image: "/images/drinks/chapman-cooler.jpeg",
+          imageAlt: "Glass of chapman cooler served chilled with citrus garnish",
       },
       {
         name: "Zobo Splash",
         description: "House-brewed hibiscus drink with pineapple, ginger, and clove.",
         price: "₦1,400",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuAK28wy6wmmYjQ1DFENj1fyWST5HjbgAYuFEERR4kTti9_95OS4xKWYYBuOh1MFkZZLD4WKCP1yduRxhk0zdulyVB6-i2BpQRxmoBSWA-HoUD7R7GAZK1Y5QcbQkKAVuoZ2P49ljHnpGucVNINLT1J9dljjKdyxy3IMyAR2SZqUmXRnMtd7AHJFwF2_2Y_qeDIv2g8GcaVKkA_pv3swneJZzpnrRjz8wN_oS70TtL7zW3GU8DdWddUbKrc_C9MgVbUinBRIZql5I_s0",
-        imageAlt: "Refreshing Nigerian drink setup",
+          image: "/images/drinks/zobo-splash.jpeg",
+          imageAlt: "Refreshing glass of zobo splash with deep red hibiscus drink",
       },
       {
         name: "Tiger Nut Latte",
         description: "Creamy chilled kunnu aya blended for a smooth modern finish.",
         price: "₦2,300",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuAK28wy6wmmYjQ1DFENj1fyWST5HjbgAYuFEERR4kTti9_95OS4xKWYYBuOh1MFkZZLD4WKCP1yduRxhk0zdulyVB6-i2BpQRxmoBSWA-HoUD7R7GAZK1Y5QcbQkKAVuoZ2P49ljHnpGucVNINLT1J9dljjKdyxy3IMyAR2SZqUmXRnMtd7AHJFwF2_2Y_qeDIv2g8GcaVKkA_pv3swneJZzpnrRjz8wN_oS70TtL7zW3GU8DdWddUbKrc_C9MgVbUinBRIZql5I_s0",
-        imageAlt: "Cold creamy drink for Nigerian restaurant menu",
+          image: "/images/drinks/tiger-nut-latte.jpeg",
+          imageAlt: "Creamy tiger nut latte served cold in a modern glass",
       },
       {
         name: "Fresh Pineapple Ginger",
         description: "Bright tropical juice with a gentle ginger kick.",
         price: "₦1,800",
-        image:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuAK28wy6wmmYjQ1DFENj1fyWST5HjbgAYuFEERR4kTti9_95OS4xKWYYBuOh1MFkZZLD4WKCP1yduRxhk0zdulyVB6-i2BpQRxmoBSWA-HoUD7R7GAZK1Y5QcbQkKAVuoZ2P49ljHnpGucVNINLT1J9dljjKdyxy3IMyAR2SZqUmXRnMtd7AHJFwF2_2Y_qeDIv2g8GcaVKkA_pv3swneJZzpnrRjz8wN_oS70TtL7zW3GU8DdWddUbKrc_C9MgVbUinBRIZql5I_s0",
-        imageAlt: "Fresh pineapple ginger juice in a glass",
+          image: "/images/drinks/fresh-pineapple-ginger.jpeg",
+          imageAlt: "Fresh pineapple ginger drink poured into a chilled glass",
       },
     ],
   },
