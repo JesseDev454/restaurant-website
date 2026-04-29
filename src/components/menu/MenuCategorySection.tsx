@@ -54,16 +54,16 @@ export function MenuCategorySection({ category }: MenuCategorySectionProps) {
               {others.map((item) => (
                 <Reveal
                   key={item.name}
-                  className="flex items-center gap-5 rounded-[1.75rem] bg-surface-container-lowest p-6"
+                  className="group flex overflow-hidden rounded-[1.75rem] bg-surface-container-lowest transition-all hover:shadow-2xl hover:shadow-primary/5"
                 >
-                  <div className="h-full w-1/3 overflow-hidden rounded-2xl">
+                  <div className="w-2/5 overflow-hidden">
                     <SmartImage
                       src={item.image}
                       alt={item.imageAlt}
-                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
-                  <div className="w-2/3">
+                  <div className="flex w-3/5 flex-col justify-between p-6">
                     <h3 className="text-xl font-bold">{item.name}</h3>
                     <p className="mt-2 text-sm leading-6 text-on-surface-variant">{item.description}</p>
                     <span className="mt-3 block font-bold text-secondary">{item.price}</span>
