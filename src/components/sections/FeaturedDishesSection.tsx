@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SmartImage } from "@/components/ui/SmartImage";
 import { featuredDishes } from "@/data/menu";
 import { buildWhatsAppLink } from "@/utils/whatsapp";
 
@@ -25,7 +26,7 @@ export function FeaturedDishesSection() {
 
         <div className="grid gap-6 md:h-[600px] md:grid-cols-4 md:grid-rows-2">
           <Reveal className="relative overflow-hidden rounded-[1.6rem] bg-surface-container-lowest md:col-span-2 md:row-span-2">
-            <img
+            <SmartImage
               src={mainDish.image}
               alt={mainDish.imageAlt}
               className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
@@ -58,7 +59,7 @@ export function FeaturedDishesSection() {
               <span className="mt-4 block text-lg font-bold text-secondary">{sideDish.price}</span>
             </div>
             <div className="w-1/2 overflow-hidden">
-              <img
+              <SmartImage
                 src={sideDish.image}
                 alt={sideDish.imageAlt}
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
@@ -72,7 +73,7 @@ export function FeaturedDishesSection() {
               className="flex flex-col overflow-hidden rounded-[1.6rem] bg-surface-container-lowest"
             >
               <div className="h-1/2 overflow-hidden">
-                <img
+                <SmartImage
                   src={dish.image}
                   alt={dish.imageAlt}
                   className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"

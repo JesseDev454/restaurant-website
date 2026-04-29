@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/ui/Reveal";
+import { SmartImage } from "@/components/ui/SmartImage";
 import { siteConfig } from "@/data/site";
 
 export function StorySection() {
@@ -22,7 +23,7 @@ export function StorySection() {
 
         <Reveal className="relative">
           <div className="overflow-hidden rounded-2xl shadow-2xl shadow-primary/10">
-            <img
+            <SmartImage
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2HdS5lo3PjT20Wt7snvijMCuLuivYoLxSzKYNk5tF1e88YegDqKgwRXPjbaNCinvB2hDyo9Vii6obwuaKUcax9_kBawLgguRzwWkcls9JaUYiu90kMJfvR9U92rjZykwTMZKGM_msiiCsdU964z0I-lrq-Co26qyzPo0VtXH-HkLOPCcDFk_5JYeqR_Il0xpkMpwcN5wfiOmoHK0ZcfNK7ThQxgerqCPtskN7IErMMIoI-apqWnk_mcTQOefC8voggCBFzTNj_-wn"
               alt="Vibrant modern restaurant interior with African decor elements"
               className="aspect-[4/5] w-full object-cover transition-transform duration-700 hover:scale-110"

@@ -1,6 +1,7 @@
 import { Clock3, MapPinned, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { SmartImage } from "@/components/ui/SmartImage";
 import { siteConfig } from "@/data/site";
 import { buildWhatsAppLink } from "@/utils/whatsapp";
 
@@ -58,7 +59,7 @@ export function ContactSection() {
         </Reveal>
 
         <Reveal className="relative min-h-[360px] bg-surface-dim lg:min-h-full">
-          <img
+          <SmartImage
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuABryy0QlUvEq0QI90j1w4LXbjvbk3y7FPbd_kq4OQxkxzG6skyHNlxT16hi0k_PG_hufTWMk3X_lVN8B03yoRK6ZOOB_v8fcIlK7B7eu4ySXx_fk-BrrxTkZ6I5wNoHhmGNCpg2sVHe3mhKK01_FVVIm9M_AS-S90IixllEKugbrNWpLNsLnm9LISnc2CFXTnwVKgVrqc0ueNwt_hqS7pVJB-uJppgr-jmYWdXs0cIrBNY7uSMUQjhHgFfGZm9BoVV4ezih79gglg_"
             alt="Stylized map showing Victoria Island Lagos area"
             className="h-full w-full object-cover grayscale opacity-50"

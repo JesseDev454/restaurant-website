@@ -1,5 +1,6 @@
 import { MessageCircle, Phone, UtensilsCrossed } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { SmartImage } from "@/components/ui/SmartImage";
 import { siteConfig } from "@/data/site";
 import { buildWhatsAppLink } from "@/utils/whatsapp";
 
@@ -41,13 +42,14 @@ export function HeroSection() {
         <div className="relative">
           <div className="absolute inset-0 -rotate-3 scale-105 rounded-[2rem] bg-primary/5" />
           <div className="relative flex flex-col gap-4">
-            <img
+            <SmartImage
+              priority
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE2GkGFI4x6nUZwmZa_bt3C3RjLn6ULxSB6feJise2gOK3oDnoUzTWTlt1SQGHvi929GoFPWeWu4VEeiFavjqt9C9v0x1xWdKAWfZjKVFNQ0Tbe2GfwAJQFr0H8W_02paLIEhshBsl2YbnxyNHKxp0FCVlwQznmY8_Bc61E_0t4i1JlAZ_sxz-fgl4oth-cKsi1gH2E6jW3OJPfA3KUfrIktqy3W7WT35a_cPC9lAWMk7TWjaXMh5DQyCcZk6ymnbNk-70ES0VaB6d"
               alt="Premium close up of smoky Nigerian jollof rice with roasted chicken"
               className="h-64 w-full rounded-3xl object-cover shadow-2xl transition-transform duration-500 hover:scale-[1.02] md:h-80"
             />
             <div className="grid grid-cols-2 gap-4">
-              <img
+              <SmartImage
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0HRHcvwZksNohOSnCsRxK7z_C84ba5svCqHEz7TT-apqQwaTsCNM4Gq4q2zyiHG0tHkJB2w-jxSkdii1bBGQjLOVCoDkfxciZslir19b_TwUEvcW_b4H4Ztj1eXVBIisw2OyWFdRfeurweIdy2tFGEHd0ns4q_-6Rq4i6YcIOFiOydvVgOUUyTIEAsRUxAS4focS5YyBQL90aKwHc7ClYgDvQf99N2wr70_SepcsNGcHrJnIdVIRu-2xYJmqAyKSrnDbqDCWelOlN"
                 alt="Traditional Nigerian suya meat skewers with spicy yaji pepper"
                 className="h-48 w-full rounded-3xl object-cover shadow-xl"

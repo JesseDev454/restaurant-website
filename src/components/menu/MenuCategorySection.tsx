@@ -1,6 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { MenuCard } from "@/components/menu/MenuCard";
 import { Reveal } from "@/components/ui/Reveal";
+import { SmartImage } from "@/components/ui/SmartImage";
 import type { MenuCategory } from "@/data/menu";
 import { buildWhatsAppLink } from "@/utils/whatsapp";
 
@@ -20,7 +21,7 @@ export function MenuCategorySection({ category }: MenuCategorySectionProps) {
             <div className="grid gap-6 md:h-[600px] md:grid-cols-4 md:grid-rows-2">
               <Reveal className="flex flex-col rounded-[1.75rem] bg-surface-container-lowest p-6 md:col-span-2 md:row-span-2">
                 <div className="mb-6 flex-1 overflow-hidden rounded-2xl">
-                  <img
+                  <SmartImage
                     src={featured.image}
                     alt={featured.imageAlt}
                     className="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
@@ -56,7 +57,7 @@ export function MenuCategorySection({ category }: MenuCategorySectionProps) {
                   className="flex items-center gap-5 rounded-[1.75rem] bg-surface-container-lowest p-6"
                 >
                   <div className="h-full w-1/3 overflow-hidden rounded-2xl">
-                    <img
+                    <SmartImage
                       src={item.image}
                       alt={item.imageAlt}
                       className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
@@ -96,7 +97,7 @@ export function MenuCategorySection({ category }: MenuCategorySectionProps) {
                 className="group flex overflow-hidden rounded-[1.75rem] bg-surface-container-lowest transition-all hover:shadow-2xl hover:shadow-primary/5"
               >
                 <div className="w-2/5 overflow-hidden">
-                  <img
+                  <SmartImage
                     src={item.image}
                     alt={item.imageAlt}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"

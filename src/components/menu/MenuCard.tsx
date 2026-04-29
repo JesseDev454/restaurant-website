@@ -1,4 +1,5 @@
 import { MessageCircle } from "lucide-react";
+import { SmartImage } from "@/components/ui/SmartImage";
 import type { MenuItem } from "@/data/menu";
 import { buildWhatsAppLink } from "@/utils/whatsapp";
 
@@ -16,7 +17,7 @@ export function MenuCard({ item, compact = false }: MenuCardProps) {
           compact ? "aspect-square" : "aspect-[4/3]",
         ].join(" ")}
       >
-        <img
+        <SmartImage
           src={item.image}
           alt={item.imageAlt}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
