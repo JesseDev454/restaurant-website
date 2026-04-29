@@ -3,6 +3,7 @@ import {
   BadgeCheck,
   Copy,
   Clock3,
+  Pencil,
   ExternalLink,
   Globe,
   Mail,
@@ -10,6 +11,7 @@ import {
   Phone,
   Receipt,
   Rocket,
+  Trash2,
   Wallet,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -26,6 +28,8 @@ type ClientListProps = {
   clients: ClientRecord[];
   onRecordPayment: (client: ClientRecord) => void;
   onMarkLaunched: (client: ClientRecord) => void;
+  onEditClient: (client: ClientRecord) => void;
+  onDeleteClient: (client: ClientRecord) => void;
 };
 
 const statusStyles: Record<ClientStatus, string> = {
@@ -113,6 +117,8 @@ export function ClientList({
   clients,
   onRecordPayment,
   onMarkLaunched,
+  onEditClient,
+  onDeleteClient,
 }: ClientListProps) {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
@@ -232,6 +238,14 @@ export function ClientList({
               <div className="mt-4 flex flex-wrap gap-3">
                 <button
                   type="button"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-50"
+                  onClick={() => onEditClient(client)}
+                >
+                  <Pencil size={16} />
+                  <span>Edit Client</span>
+                </button>
+                <button
+                  type="button"
                   className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
                   onClick={() => onRecordPayment(client)}
                 >
@@ -254,6 +268,14 @@ export function ClientList({
                   label={copiedKey === `${client.id}-domain` ? "Copied Domain" : "Copy Domain Reminder"}
                   onClick={() => handleCopy(buildDomainReminder(client), `${client.id}-domain`)}
                 />
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700 transition-colors hover:bg-rose-100"
+                  onClick={() => onDeleteClient(client)}
+                >
+                  <Trash2 size={16} />
+                  <span>Delete Client</span>
+                </button>
               </div>
 
               <PaymentHistorySection client={client} />
@@ -366,6 +388,14 @@ export function ClientList({
                       <div className="mt-4 flex flex-wrap gap-3">
                         <button
                           type="button"
+                          className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-50"
+                          onClick={() => onEditClient(client)}
+                        >
+                          <Pencil size={16} />
+                          <span>Edit Client</span>
+                        </button>
+                        <button
+                          type="button"
                           className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
                           onClick={() => onRecordPayment(client)}
                         >
@@ -388,6 +418,14 @@ export function ClientList({
                           label={copiedKey === `${client.id}-domain` ? "Copied Domain" : "Copy Domain Reminder"}
                           onClick={() => handleCopy(buildDomainReminder(client), `${client.id}-domain`)}
                         />
+                        <button
+                          type="button"
+                          className="inline-flex items-center gap-2 rounded-full border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700 transition-colors hover:bg-rose-100"
+                          onClick={() => onDeleteClient(client)}
+                        >
+                          <Trash2 size={16} />
+                          <span>Delete Client</span>
+                        </button>
                       </div>
 
                       <PaymentHistorySection client={client} compact />

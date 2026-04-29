@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
   CheckCircle2,
@@ -7,11 +7,14 @@ import {
   Users,
 } from "lucide-react";
 import { AddClientModal } from "@/components/admin/AddClientModal";
+import { DeleteClientModal } from "@/components/admin/DeleteClientModal";
+import { EditClientModal } from "@/components/admin/EditClientModal";
 import { MarkLaunchedModal } from "@/components/admin/MarkLaunchedModal";
 import { RecordPaymentModal } from "@/components/admin/RecordPaymentModal";
 import { AdminSummaryCard } from "@/components/admin/AdminSummaryCard";
 import { ClientList } from "@/components/admin/ClientList";
 import { mockClients } from "@/data/admin/clients";
+import { loadAdminClients, saveAdminClients } from "@/data/admin/clientStorage";
 import type {
   AddClientFormValues,
   ClientRecord,
@@ -33,10 +36,16 @@ function addYears(dateValue: string | null, years: number, fallbackDate: string)
 }
 
 export function AdminDashboardPage() {
-  const [clients, setClients] = useState<ClientRecord[]>(mockClients);
+  const [clients, setClients] = useState<ClientRecord[]>(() => loadAdminClients(mockClients));
   const [isAddClientOpen, setIsAddClientOpen] = useState(false);
+  const [editingClient, setEditingClient] = useState<ClientRecord | null>(null);
+  const [deletingClient, setDeletingClient] = useState<ClientRecord | null>(null);
   const [paymentClient, setPaymentClient] = useState<ClientRecord | null>(null);
   const [launchClient, setLaunchClient] = useState<ClientRecord | null>(null);
+
+  useEffect(() => {
+    saveAdminClients(clients);
+  }, [clients]);
 
   const summary = useMemo(
     () => ({
@@ -75,6 +84,34 @@ export function AdminDashboardPage() {
     };
 
     setClients((current) => [newClient, ...current]);
+  }
+
+  function handleEditClient(clientId: string, values: AddClientFormValues) {
+    setClients((current) =>
+      current.map((client) =>
+        client.id === clientId
+          ? {
+              ...client,
+              businessName: values.businessName,
+              contactName: values.contactName,
+              whatsapp: values.whatsapp,
+              phone: values.phone,
+              email: values.email,
+              setupFeeAmount: values.setupFeeAmount,
+              monthlyFeeAmount: values.monthlyFeeAmount,
+              notes: values.notes,
+            }
+          : client,
+      ),
+    );
+  }
+
+  function handleDeleteClient(clientId: string) {
+    setClients((current) => current.filter((client) => client.id !== clientId));
+    setEditingClient((current) => (current?.id === clientId ? null : current));
+    setPaymentClient((current) => (current?.id === clientId ? null : current));
+    setLaunchClient((current) => (current?.id === clientId ? null : current));
+    setDeletingClient(null);
   }
 
   function handleRecordPayment(clientId: string, values: RecordPaymentFormValues) {
@@ -207,6 +244,8 @@ export function AdminDashboardPage() {
 
         <ClientList
           clients={clients}
+          onEditClient={setEditingClient}
+          onDeleteClient={setDeletingClient}
           onRecordPayment={setPaymentClient}
           onMarkLaunched={setLaunchClient}
         />
@@ -216,6 +255,12 @@ export function AdminDashboardPage() {
         isOpen={isAddClientOpen}
         onClose={() => setIsAddClientOpen(false)}
         onSubmit={handleAddClient}
+      />
+      <EditClientModal
+        client={editingClient}
+        isOpen={editingClient !== null}
+        onClose={() => setEditingClient(null)}
+        onSubmit={handleEditClient}
       />
       <RecordPaymentModal
         client={paymentClient}
@@ -228,6 +273,12 @@ export function AdminDashboardPage() {
         isOpen={launchClient !== null}
         onClose={() => setLaunchClient(null)}
         onSubmit={handleMarkLaunched}
+      />
+      <DeleteClientModal
+        client={deletingClient}
+        isOpen={deletingClient !== null}
+        onClose={() => setDeletingClient(null)}
+        onConfirm={handleDeleteClient}
       />
     </>
   );

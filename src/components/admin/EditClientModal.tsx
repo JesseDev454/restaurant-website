@@ -1,16 +1,17 @@
 import type { FormEvent } from "react";
 import { useEffect, useState } from "react";
-import { Plus, X } from "lucide-react";
+import { Pencil, X } from "lucide-react";
 import { ClientFormFields } from "@/components/admin/ClientFormFields";
-import type { AddClientFormValues } from "@/types/admin";
+import type { AddClientFormValues, ClientRecord } from "@/types/admin";
 
-type AddClientModalProps = {
+type EditClientModalProps = {
+  client: ClientRecord | null;
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (values: AddClientFormValues) => void;
+  onSubmit: (clientId: string, values: AddClientFormValues) => void;
 };
 
-const initialFormValues: AddClientFormValues = {
+const emptyFormValues: AddClientFormValues = {
   businessName: "",
   contactName: "",
   whatsapp: "",
@@ -21,8 +22,28 @@ const initialFormValues: AddClientFormValues = {
   notes: "",
 };
 
-export function AddClientModal({ isOpen, onClose, onSubmit }: AddClientModalProps) {
-  const [formValues, setFormValues] = useState<AddClientFormValues>(initialFormValues);
+function getFormValues(client: ClientRecord | null): AddClientFormValues {
+  if (!client) return emptyFormValues;
+
+  return {
+    businessName: client.businessName,
+    contactName: client.contactName,
+    whatsapp: client.whatsapp,
+    phone: client.phone,
+    email: client.email,
+    setupFeeAmount: client.setupFeeAmount,
+    monthlyFeeAmount: client.monthlyFeeAmount,
+    notes: client.notes,
+  };
+}
+
+export function EditClientModal({
+  client,
+  isOpen,
+  onClose,
+  onSubmit,
+}: EditClientModalProps) {
+  const [formValues, setFormValues] = useState<AddClientFormValues>(emptyFormValues);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -39,11 +60,13 @@ export function AddClientModal({ isOpen, onClose, onSubmit }: AddClientModalProp
 
   useEffect(() => {
     if (isOpen) {
-      setFormValues(initialFormValues);
+      setFormValues(getFormValues(client));
     }
-  }, [isOpen]);
+  }, [client, isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !client) return null;
+
+  const clientId = client.id;
 
   function updateField<K extends keyof AddClientFormValues>(
     field: K,
@@ -58,7 +81,7 @@ export function AddClientModal({ isOpen, onClose, onSubmit }: AddClientModalProp
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const payload: AddClientFormValues = {
+    onSubmit(clientId, {
       businessName: formValues.businessName.trim(),
       contactName: formValues.contactName.trim(),
       whatsapp: formValues.whatsapp.trim(),
@@ -67,9 +90,8 @@ export function AddClientModal({ isOpen, onClose, onSubmit }: AddClientModalProp
       setupFeeAmount: Number(formValues.setupFeeAmount),
       monthlyFeeAmount: Number(formValues.monthlyFeeAmount),
       notes: formValues.notes.trim(),
-    };
+    });
 
-    onSubmit(payload);
     onClose();
   }
 
@@ -79,20 +101,20 @@ export function AddClientModal({ isOpen, onClose, onSubmit }: AddClientModalProp
         type="button"
         className="absolute inset-0 bg-slate-950/50 backdrop-blur-[2px]"
         onClick={onClose}
-        aria-label="Close add client modal"
+        aria-label="Close edit client modal"
       />
 
       <div className="relative z-10 w-full max-w-3xl rounded-[2rem] border border-slate-200 bg-white shadow-2xl shadow-slate-950/15">
         <div className="flex items-start justify-between gap-4 border-b border-slate-200 px-6 py-5 sm:px-8">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-              Add Client
+              Edit Client
             </p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">
-              Create a new client record
+              Update client details
             </h2>
             <p className="mt-2 text-sm text-slate-500">
-              This version stores the new client only in local dashboard state.
+              Edit business info, contact details, pricing, and internal notes.
             </p>
           </div>
 
@@ -121,8 +143,8 @@ export function AddClientModal({ isOpen, onClose, onSubmit }: AddClientModalProp
               type="submit"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
             >
-              <Plus size={18} />
-              <span>Create Client</span>
+              <Pencil size={18} />
+              <span>Save Changes</span>
             </button>
           </div>
         </form>
