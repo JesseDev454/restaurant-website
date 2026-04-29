@@ -64,9 +64,15 @@ export function MenuCategorySection({ category }: MenuCategorySectionProps) {
                     />
                   </div>
                   <div className="flex w-3/5 flex-col justify-between p-6">
-                    <h3 className="text-xl font-bold">{item.name}</h3>
-                    <p className="mt-2 text-sm leading-6 text-on-surface-variant">{item.description}</p>
-                    <span className="mt-3 block font-bold text-secondary">{item.price}</span>
+                    <div>
+                      <div className="mb-2 flex items-start justify-between gap-4">
+                        <h3 className="text-xl font-bold">{item.name}</h3>
+                        <span className="whitespace-nowrap font-bold text-secondary">
+                          {item.price}
+                        </span>
+                      </div>
+                      <p className="text-sm leading-6 text-on-surface-variant">{item.description}</p>
+                    </div>
                     <a
                       href={buildWhatsAppLink(`Hello I want to order ${item.name} from Lagos Kinetic`)}
                       target="_blank"
